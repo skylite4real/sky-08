@@ -1,0 +1,318 @@
+/* Enhanced style for upload section */
+.upload-section {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position to cover the entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Light grey background */
+    z-index: 9999; /* High z-index to ensure it's above other content */
+    overflow: auto; /* To handle scroll if content overflows */
+    font-family: 'Arial', sans-serif; /* Consistent font style */
+    padding: 20px; /* Added padding for better spacing */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle inner shadow for depth */
+}
+
+/* Style for back arrow icon */
+.back-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10000; /* Ensure it stays above the upload section */
+    color: #1a73e8; /* Blue color for back icon */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.back-icon:hover {
+    color: #155bcb; /* Darker blue on hover */
+}
+
+/* Additional styles to prevent interference with other content */
+body.uploading {
+    overflow: hidden; /* Prevent scrolling of background content */
+}
+
+/* Header */
+.video-section-header {
+    text-align: center;
+    margin-top: 10px !important;
+    font-size: 28px; /* Slightly larger font size */
+    margin-bottom: 20px;
+    color: #1a73e8; /* Blue color for header */
+    font-weight: bold; /* Bold font for emphasis */
+    text-transform: uppercase; /* Uppercase letters for a modern look */
+}
+
+/* Tabs above the horizontal line */
+.upload-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px; /* 10px above the horizontal line */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    gap: 10px; /* Gap between tabs for better spacing */
+}
+
+.upload-tabs .tab {
+    margin: 0 15px; /* Space between tabs */
+    font-size: 16px;
+    color: #555; /* Slightly lighter color for tabs */
+    cursor: pointer;
+    border: none; /* Remove any border */
+    background: none; /* Remove any background */
+    padding: 10px 20px; /* Add padding for a clickable area */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease, border-bottom 0.3s ease; /* Smooth transition for hover and active effects */
+    border-radius: 4px; /* Rounded corners for tabs */
+}
+
+.upload-tabs .tab:hover {
+    color: #000; /* Text color change on hover */
+    background-color: #e0e0e0; /* Light grey background on hover */
+}
+
+.upload-tabs .tab.active {
+    color: #1a73e8; /* Blue color for the active tab */
+    border-bottom: 2px solid #1a73e8; /* Blue underline for the active tab */
+    background-color: #d0e7ff; /* Light blue background for active tab */
+}
+
+/* Horizontal line below the tabs */
+.upload-divider {
+    margin: 0 auto 20px auto; /* Space between the line and the content below */
+    width: 90%; /* Line width relative to container */
+    border: 1px solid white; /* Light grey line */
+}
+
+/* Box below the horizontal line */
+.box-content {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position the box absolutely */
+    top: 150px; /* Adjust to be below the horizontal line */
+    left: 200px; /* Ensure it doesn't overlap with steps */
+    width: calc(100% - 500px); /* Increased box width */
+    max-width: 1000px; /* Increased maximum width */
+    height: 550px; /* Fixed height */
+    background-color: white; /* White background color */
+    padding: 20px;
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    border-radius: 8px; /* Rounded corners for a modern look */
+}
+
+/* Content associated with each tab */
+.tab-content {
+    display: none; /* Hidden by default */
+    margin-top: 10px; /* Space between line and content */
+}
+
+/* Steps inside each tab for large screens */
+.steps {
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Align steps vertically */
+    align-items: flex-start; /* Align to the left side */
+    margin-top: 5px;
+    padding-left: 20px;
+    gap: 10px; /* Gap between steps for better spacing */
+}
+
+/* Steps inside each tab for mid and small screens */
+@media (max-width: 992px) {
+    .steps {
+        flex-direction: row; /* Align steps horizontally */
+        align-items: center; /* Center align steps */
+        justify-content: flex-start; /* Left align steps horizontally */
+        margin-top: 20px; /* Space between steps and other content */
+        padding-left: 0; /* No padding on smaller screens */
+        flex-wrap: nowrap; /* No wrapping */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+        scrollbar-width: none; /* Hide scrollbar in Firefox */
+        white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    .steps::-webkit-scrollbar {
+        display: none; /* Hide scrollbar in Webkit browsers */
+    }
+
+    .box-content {
+        position: static; /* Static positioning for smaller screens */
+        width: 100%; /* Full width */
+        height: auto; /* Auto height */
+        max-width: none; /* No max width */
+        margin-top: 20px; /* Margin for spacing */
+    }
+}
+
+/* Steps inside each tab for small screens */
+@media (max-width: 768px) {
+    .upload-tabs {
+        flex-direction: row; /* Keep tabs horizontal */
+        align-items: center; /* Center align tabs */
+        justify-content: center; /* Center align tabs horizontally */
+        flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    }
+
+    .upload-tabs .tab {
+        margin: 10px 5px; /* Margin for spacing between tabs */
+    }
+
+    .steps {
+        flex-direction: row; /* Keep steps horizontal */
+        align-items: center; /* Center align steps */
+        justify-content: flex-start; /* Left align steps horizontally */
+        flex-wrap: nowrap; /* No wrapping */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+        scrollbar-width: none; /* Hide scrollbar in Firefox */
+        white-space: nowrap; /* Prevent text from wrapping */
+    }
+
+    .steps::-webkit-scrollbar {
+        display: none; /* Hide scrollbar in Webkit browsers */
+    }
+
+    .steps .step {
+        margin: 10px 5px; /* Margin for spacing between steps */
+    }
+
+    .box-content {
+        margin-top: 30px; /* More space between steps and box content */
+    }
+}
+
+/* Step styling */
+.steps .step {
+    margin: 10px 0; /* Space between steps */
+    font-size: 16px;
+    color: #333; /* Darker color for better readability */
+    cursor: pointer;
+    border: none; /* Remove any border */
+    background: none; /* Remove any background */
+    padding: 10px 20px; /* Add padding for a clickable area */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease, border-left 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover and active effects */
+    border-radius: 4px; /* Rounded corners for steps */
+}
+
+.steps .step:hover {
+    color: #000; /* Text color change on hover */
+    background-color: #f0f0f0; /* Light grey background on hover */
+}
+
+.steps .step.active {
+    color: #1a73e8; /* Blue color for active step */
+    border-left: 4px solid #1a73e8; /* Blue left border for active step */
+    background-color: #d0e7ff; /* Light blue background for active step */
+}
+
+/* Content for the steps */
+.step-content {
+    display: none; /* Hidden by default */
+    margin-top: 10px; /* Space between line and content */
+}
+
+/* Video Preview Box Styling */
+.preview-box {
+    position: absolute;
+    top: 150px;
+    right: 30px;
+    width: 250px; /* Reduced width */
+    height: 250px; /* Reduced height */
+    background-color: white; /* Slightly different background color */
+    padding: 20px;
+    margin-left: 0px;
+    overflow-y: auto;
+    border-radius: 8px; /* Rounded corners for a modern look */
+}
+
+/* Header for Video Preview */
+.preview-box h4 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Video preview container */
+.video-preview {
+    width: 100%;
+    height: auto;
+    background-color: #000; /* Black background to simulate a video screen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+/* Media query to handle smaller screens */
+@media (max-width: 768px) {
+    .preview-box {
+        position: static; /* Static positioning for smaller screens */
+        width: 350px;
+        height: 350px; /* Auto height */
+        max-width: none; /* No max width */
+        margin-top: 0px; /* Space between box-content and preview-box */
+    }
+}
+
+/* General styles for large screens (already included) */
+
+/* Responsive styles for mid and small screens */
+@media (max-width: 992px) {
+    .preview-box {
+        position: static; /* Position the boxes statically for responsiveness */
+        width: 350px;
+        height: 350px; /* Auto height */ /* Full width for better fit on smaller screens */
+        max-width: none; /* Remove max-width constraint */
+        margin-top: 0px; /* Space between other content and the boxes */
+    }
+
+    .box-content {
+        position: static; /* Static positioning for smaller screens */
+        width: 100%; /* Full width */
+        max-width: none; /* No max width */
+        height: auto; /* Auto height */
+        margin-top: 0px; /* Space between preview box and content box */
+    }
+}
+
+@media (max-width: 768px) {
+    .preview-box {
+        position: static; /* Static positioning for smaller screens */
+        width: 350px; /* Full width */
+        max-width: none; /* No max width */
+        height: 350px; /* Auto height */
+        margin-top: 20px; /* Space between other content and the boxes */
+        margin-bottom: 0px;
+    }
+
+    .box-content {
+        position: static; /* Static positioning for smaller screens */
+        width: 100%; /* Full width */
+        max-width: none; /* No max width */
+        height: auto; /* Auto height */
+        margin-top: 0px; /* Space between preview box and content box */
+    }
+}
+
+/* Close Preview Button Styling */
+.close-preview-button {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 15px;
+    background-color: #1a73e8; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.close-preview-button:hover {
+    background-color: #155bcb; /* Darker blue on hover */
+}
